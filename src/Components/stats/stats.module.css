@@ -1,0 +1,39 @@
+.stats {
+  position: absolute;
+  background: rgb(10, 10, 10);
+  top: 10vh;
+  left: 0;
+  height: 55vh;
+  width: 100%;
+  margin: auto;
+  transform: translateY(-100vh);
+  transition: all 0.3s linear;
+}
+
+.show {
+  transform: translateY(0);
+  transition: all 0.3s linear;
+}
+
+.title {
+  text-align: center;
+  margin: 20px;
+}
+
+.statsEl {
+  color: inherit;
+  margin: 10px;
+  transition: all 0.3s linear;
+}
+.statsElSelected {
+  color: rgb(87, 142, 142);
+  margin: 10px;
+  margin-left: 0;
+  transition: all 0.3s linear;
+}
+.list {
+  width: 80%;
+  margin: auto;
+  border: 1px solid rgb(23, 23, 23);
+  padding: 10px;
+}

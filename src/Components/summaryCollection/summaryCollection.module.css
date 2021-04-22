@@ -1,0 +1,50 @@
+.summaryCollection {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.224);
+  color: inherit;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.statsBtn {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  margin: 5px;
+}
+.stats {
+  width: 3px;
+  height: 20px;
+  border-radius: 15px;
+  border: 1px solid rgb(129, 129, 129);
+}
+.stats::before {
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  content: "";
+  width: 3px;
+  height: 25px;
+  border-radius: 15px;
+  border: 1px solid rgb(129, 129, 129);
+}
+.stats::after {
+  position: absolute;
+  bottom: 0;
+  left: -8px;
+  content: "";
+  width: 3px;
+  height: 15px;
+  border-radius: 15px;
+  border: 1px solid rgb(129, 129, 129);
+}
+
+.statsActive,
+.statsActive:before,
+.statsActive:after {
+  border: 1px solid rgb(87, 142, 142);
+}

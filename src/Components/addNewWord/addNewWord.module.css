@@ -1,0 +1,68 @@
+.addNewWord {
+  position: absolute;
+  background: rgb(10, 10, 10);
+  top: 10vh;
+  left: 0;
+  height: 55vh;
+  width: 100%;
+  margin: auto;
+  transform: translateY(-100vh);
+  transition: all 0.3s linear;
+}
+.area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.show {
+  transform: translateY(0);
+  transition: all 0.3s linear;
+}
+.spanishArea,
+.polishArea {
+  margin: auto;
+  height: 40%;
+  width: 90%;
+  background: rgb(39, 39, 39);
+  box-shadow: inset 0 0 10px black;
+  border-radius: 15px;
+  text-align: center;
+  font-family: "chalk";
+  font-size: 15px;
+  padding-top: 5px;
+  color: white;
+}
+.inputType {
+  width: 80%;
+  padding: 4px;
+  margin: 3px;
+  margin-top: 10px;
+  background: inherit;
+  outline: none;
+  color: white;
+  border: 0;
+  border-bottom: 1px solid rgb(29, 28, 28);
+}
+input[type="text"] {
+  font-size: inherit;
+}
+.submitBtn {
+  font-family: "chalk";
+  font-size: 15px;
+  color: white;
+  width: 100px;
+  margin-left: 60%;
+  background: rgb(10, 10, 10);
+  text-align: center;
+  border-radius: 15px;
+  padding: 4px;
+
+  border: 2px solid rgb(66, 66, 66);
+}
+.submitBtn:active {
+  color: rgb(87, 142, 142);
+}

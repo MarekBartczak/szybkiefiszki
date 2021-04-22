@@ -1,0 +1,15 @@
+.navbar {
+  background: rgba(0, 0, 0, 0.519);
+  height: 10vh;
+  width: 100vw;
+  box-shadow: 0 10px 20px rgb(0, 0, 0);
+}
+.logo {
+  background: url("../../Assets/logo/transparent_logo2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 250px;
+  height: 100%;
+  margin: auto;
+}

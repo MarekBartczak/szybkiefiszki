@@ -1,0 +1,29 @@
+.addButton {
+  background: black;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  /* margin-top: 40px; */
+  border: 4px solid rgb(66, 66, 66);
+  box-shadow: 0 0 10px black, inset 0 0 10px rgb(66, 66, 66);
+  transition: all 0.3s linear;
+  font-family: "chalk";
+  font-size: 25px;
+}
+.addButton:active {
+  height: 95px;
+  width: 95px;
+  box-shadow: 0 0 5px black;
+}
+
+.addOn {
+  color: rgb(87, 142, 142);
+  height: 97px;
+  width: 97px;
+  border: 2px solid rgb(66, 66, 66);
+  box-shadow: 0 0 8px black, inset 0 0 10px rgb(66, 66, 66);
+}

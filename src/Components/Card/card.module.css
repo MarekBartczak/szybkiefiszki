@@ -1,0 +1,62 @@
+.card {
+  background: rgb(10, 10, 10);
+  height: 300px;
+  width: 90vw;
+  margin: auto;
+  margin-top: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgb(0, 0, 0), inset 0 0 10px rgb(66, 66, 66);
+  border: 4px solid rgb(66, 66, 66);
+  transition: all 0.3s linear;
+}
+.word {
+  font-family: "chalk";
+  font-size: 30px;
+  padding-top: 50px;
+  text-align: left;
+  padding-left: 40px;
+  font-weight: bold;
+  transition: all 0.3s linear;
+}
+
+.descriptionWord {
+  font-family: "chalk";
+  padding-top: 40px;
+  padding-left: 50px;
+  font-size: 25px;
+  transition: all 0.3s linear;
+}
+.Back {
+  transform: rotateY(180deg);
+}
+
+.btns {
+  position: relative;
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.learnStat,
+.edit,
+.delete {
+  color: inherit;
+}
+.edit:active {
+  color: greenyellow;
+}
+.delete:active {
+  color: red;
+}
+
+.selectedLearnStatus {
+  color: rgb(87, 142, 142);
+}
+/* .learned:hover {
+  color: rgb(87, 142, 142);
+}
+.notLearned:hover {
+  color: rgb(87, 142, 142);
+} */
