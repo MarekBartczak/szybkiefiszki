@@ -66,3 +66,11 @@ input[type="text"] {
 .submitBtn:active {
   color: rgb(87, 142, 142);
 }
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
+}

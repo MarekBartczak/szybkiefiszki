@@ -24,7 +24,7 @@ class App extends Component {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
-            marginTop: "40px",
+            marginTop: "20px",
           }}
         >
           <ChangeCard direct="left" />
