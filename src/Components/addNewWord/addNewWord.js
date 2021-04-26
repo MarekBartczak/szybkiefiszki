@@ -12,6 +12,13 @@ class AddNewWord extends Component {
     learnedStatus: 0,
   };
 
+  handleInput = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+    this.setState({ [name]: value });
+  };
+
   toggleVIew = () => {
     let style;
     this.props.addNewWordCardToggle
@@ -20,12 +27,6 @@ class AddNewWord extends Component {
 
     return style.join(" ");
   };
-  handleInput = (event) => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
-    this.setState({ [name]: value });
-  };
 
   checkIfInputNotEmpty = (a, b, c, d) => {
     if (a === "" || b === "" || c === "" || d === "") {
@@ -33,6 +34,15 @@ class AddNewWord extends Component {
     } else {
       return true;
     }
+  };
+
+  clearState = () => {
+    this.setState({
+      spanishWord: "",
+      spanishWordDescription: "",
+      polishhWord: "",
+      polishhWordDescription: "",
+    });
   };
 
   save = () => {
@@ -45,16 +55,26 @@ class AddNewWord extends Component {
     if (checkIfNotEmpty) {
       this.props.onAddNewWordCardToggle();
       this.props.onSaveWord(this.state);
-      this.setState({
-        spanishWord: "",
-        spanishWordDescription: "",
-        polishhWord: "",
-        polishhWordDescription: "",
-      });
+      this.clearState();
     } else {
       //add dialog box later
       alert("Uzuepełnij brakujące słowa");
     }
+  };
+
+  input = (cls, val, plchldr) => {
+    return (
+      <input
+        type="text"
+        className={styles[cls]}
+        value={this.state[val]}
+        name={`${val}`}
+        placeholder={`${plchldr}`}
+        autoCapitalize="off"
+        spellCheck="false"
+        onChange={this.handleInput}
+      ></input>
+    );
   };
 
   render() {
@@ -64,55 +84,19 @@ class AddNewWord extends Component {
           <div className={styles.spanishArea}>
             Espanol
             <div className={styles.spanishWord}>
-              <input
-                type="text"
-                className={styles.inputType}
-                value={this.state.spanishWord}
-                name="spanishWord"
-                placeholder="palabra"
-                autoCapitalize="off"
-                spellCheck="false"
-                onChange={this.handleInput}
-              ></input>
+              {this.input("inputType", "spanishWord", "palabra")}
             </div>
             <div className={styles.spanishWordDescription}>
-              <input
-                type="text"
-                className={styles.inputType}
-                value={this.state.spanishWordDescription}
-                name="spanishWordDescription"
-                placeholder="descripción"
-                autoCapitalize="off"
-                spellCheck="false"
-                onChange={this.handleInput}
-              ></input>
+              {this.input("inputType", "spanishWordDescription", "descripción")}
             </div>
           </div>
           <div className={styles.polishArea}>
             Polski
             <div className={styles.polishhWord}>
-              <input
-                type="text"
-                value={this.state.polishhWord}
-                className={styles.inputType}
-                name="polishhWord"
-                placeholder="słowo"
-                autoCapitalize="off"
-                spellCheck="false"
-                onChange={this.handleInput}
-              ></input>
+              {this.input("inputType", "polishhWord", "słowo")}
             </div>
             <div className={styles.polishhWordDescription}>
-              <input
-                type="text"
-                value={this.state.polishhWordDescription}
-                className={styles.inputType}
-                name="polishhWordDescription"
-                placeholder="opis"
-                autoCapitalize="off"
-                spellCheck="false"
-                onChange={this.handleInput}
-              ></input>
+              {this.input("inputType", "polishhWordDescription", "opis")}
             </div>
           </div>
         </div>

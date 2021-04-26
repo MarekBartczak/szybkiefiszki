@@ -10,8 +10,8 @@
   transition: all 0.3s linear;
 }
 .word {
-  font-family: "chalk";
-  font-size: 30px;
+  /* font-family: "chalk"; */
+  font-size: 25px;
   padding-top: 50px;
   text-align: left;
   padding-left: 40px;
@@ -20,10 +20,10 @@
 }
 
 .descriptionWord {
-  font-family: "chalk";
+  /* font-family: "chalk"; */
   padding-top: 40px;
   padding-left: 50px;
-  font-size: 25px;
+  font-size: 19px;
   transition: all 0.3s linear;
 }
 .Back {
@@ -54,9 +54,42 @@
 .selectedLearnStatus {
   color: rgb(87, 142, 142);
 }
-/* .learned:hover {
-  color: rgb(87, 142, 142);
+
+.modalAskDel {
+  position: absolute;
+  /* top: 50vh; */
+  top: 10vh;
+  width: 100vw;
+  height: 90vh;
+  background: rgba(0, 0, 0, 0.492);
+  /* margin-left: 10vw; */
+  text-align: center;
+  z-index: 1000;
 }
-.notLearned:hover {
-  color: rgb(87, 142, 142);
-} */
+.askDelTest {
+  text-align: center;
+  color: white;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 50px;
+  border-radius: 10px;
+  background: rgb(103, 103, 103);
+  margin: auto;
+  margin-top: 100px;
+}
+.askDelBtns {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+.askDelCancel,
+.askDelConfirm {
+  color: white;
+  margin: 20px;
+  margin-top: 25px;
+}

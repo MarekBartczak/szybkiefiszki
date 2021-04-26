@@ -3,3 +3,8 @@
   background: rgb(25, 25, 25);
   height: 370px;
 }
+.empty {
+  padding-top: 100px;
+  text-align: center;
+  font-weight: bold;
+}

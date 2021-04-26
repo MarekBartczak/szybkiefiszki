@@ -5,17 +5,19 @@ import * as actionsTypes from "../../store/actions/actions";
 
 class ChangeCard extends Component {
   swichCard = (side) => {
-    let range = this.props.items.length;
-    let current = this.props.currentItemIndex;
-    let select = current + side;
+    if (this.props.items.length > 0) {
+      let range = this.props.items.length;
+      let current = this.props.currentItemIndex;
+      let select = current + side;
 
-    if (current + side < 0) {
-      select = range - 1;
+      if (current + side < 0) {
+        select = range - 1;
+      }
+      if (current + side === range) {
+        select = 0;
+      }
+      this.props.onChangeCard(select);
     }
-    if (current + side === range) {
-      select = 0;
-    }
-    this.props.onChangeCard(select);
   };
 
   setSide = () => {

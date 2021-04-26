@@ -86,6 +86,13 @@ const reducer = (state = initialState, action) => {
             : item
         ),
       };
+    case actionsTypes.REMOVE_CARD:
+      state.items.splice(action.index, 1);
+      return {
+        ...state,
+        items: [...state.items],
+        currentItemIndex: 0,
+      };
     default:
       return {
         ...state,

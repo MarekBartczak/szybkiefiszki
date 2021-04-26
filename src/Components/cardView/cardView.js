@@ -6,12 +6,19 @@ import Aux from "../../hoc/aux";
 import Card from "../Card/card";
 
 class CardView extends Component {
+  checkIfListEmpty = () => {
+    console.log(this.props.items);
+    if (this.props.items.length > 0) {
+      return <Card index={this.props.currentItemIndex} />;
+    }
+    if (this.props.items.length === 0) {
+      return <div className={styles.empty}> Dodaj nowe słówka </div>;
+    }
+  };
   render() {
     return (
       <Aux>
-        <div className={styles.cardView}>
-          <Card index={this.props.currentItemIndex} />
-        </div>
+        <div className={styles.cardView}>{this.checkIfListEmpty()}</div>
       </Aux>
     );
   }

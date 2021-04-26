@@ -5,3 +5,4 @@ export const SAVE_WORD = "SAVE_WORD";
 export const SELECT_STATS = "SELECT_STATS";
 export const SWITCH_LEARN_STATUS = "SWITCH_LEARN_STATUS";
 export const CHANGE_CARD = "CHANGE_CARD";
+export const REMOVE_CARD = "REMOVE_CARD";
