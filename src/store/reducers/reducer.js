@@ -6,6 +6,7 @@ const initialState = {
   },
   addNewWordCardToggle: false,
   showStatsToggle: false,
+  showFilterToggle: false,
   //   backDropToggle: false,
   items: [
     {
@@ -68,12 +69,20 @@ const initialState = {
   stats: [
     "zapisanych słów : ",
     "zapisanych słów dzisiaj : ",
-    "zapisanych słów [ostatnie 5 dni] : ",
+    "zapisanych słów z ostatnich 5 dni : ",
     "nauczonych słów : ",
     "nauczonych słów dzisiaj : ",
-    "nauczonych słów [ostatnie 5 dni] : ",
+    "nauczonych słów z ostatnich 5 dni : ",
   ],
   selectedStats: 0,
+  filter: [
+    "wszystkie słowa",
+    "słowa do nauczenia",
+    "nauczone słowa",
+    "dzisiejsze słowa",
+    "słowa z ostatnich 5 dni",
+  ],
+  selectedFilter: 0,
 };
 
 const reducer = (state = initialState, action) => {
@@ -91,11 +100,25 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         showStatsToggle: !state.showStatsToggle,
+        showFilterToggle: false,
+        addNewWordCardToggle: false,
+      };
+    case actionsTypes.SHOW_FILTER_TOGGLE:
+      return {
+        ...state,
+        showFilterToggle: !state.showFilterToggle,
+        showStatsToggle: false,
+        addNewWordCardToggle: false,
       };
     case actionsTypes.SELECT_STATS:
       return {
         ...state,
         selectedStats: action.selected,
+      };
+    case actionsTypes.SELECT_FILTER:
+      return {
+        ...state,
+        selectedFilter: action.selected,
       };
 
     case actionsTypes.SAVE_WORD:

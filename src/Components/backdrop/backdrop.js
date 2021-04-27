@@ -15,6 +15,9 @@ class Backdrop extends Component {
           if (this.props.showStatsToggle) {
             this.props.onShowStatsToggle();
           }
+          if (this.props.showFilterToggle) {
+            this.props.onShowFilterToggle();
+          }
         }}
       ></div>
     );
@@ -30,6 +33,8 @@ const mapDispatchToProps = (dispatch) => {
     onAddNewWordCardToggle: () =>
       dispatch({ type: actionsTypes.ADD_NEW_WORD_CARD_TOGGLE }),
     onShowStatsToggle: () => dispatch({ type: actionsTypes.SHOW_STATS_TOGGLE }),
+    onShowFilterToggle: () =>
+      dispatch({ type: actionsTypes.SHOW_FILTER_TOGGLE }),
   };
 };
 export default connect(mapStateToPropst, mapDispatchToProps)(Backdrop);

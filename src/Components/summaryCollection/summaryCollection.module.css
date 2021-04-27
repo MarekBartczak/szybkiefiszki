@@ -8,6 +8,10 @@
   display: grid;
   justify-content: center;
   align-items: center;
+  text-align: center;
+
+  /* background: green; */
+  /* z-indexx: 10; */
 }
 
 .statsBtn {
@@ -47,4 +51,17 @@
 .statsActive:before,
 .statsActive:after {
   border: 1px solid rgb(87, 142, 142);
+}
+
+.filterBtn {
+  color: rgb(129, 129, 129);
+  position: fixed;
+  bottom: 3px;
+  left: 20px;
+}
+.filterBtnActive {
+  color: rgb(87, 142, 142);
+  position: fixed;
+  bottom: 3px;
+  left: 20px;
 }
