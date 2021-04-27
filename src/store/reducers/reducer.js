@@ -91,7 +91,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         items: [...state.items],
-        currentItemIndex: 0,
       };
     default:
       return {

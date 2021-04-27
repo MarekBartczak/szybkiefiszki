@@ -7,6 +7,7 @@ import Card from "../Card/card";
 
 class CardView extends Component {
   checkIfListEmpty = () => {
+    console.log(this.props.currentItemIndex);
     console.log(this.props.items);
     if (this.props.items.length > 0) {
       return <Card index={this.props.currentItemIndex} />;
