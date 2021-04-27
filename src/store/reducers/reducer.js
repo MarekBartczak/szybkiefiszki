@@ -41,6 +41,28 @@ const initialState = {
         learned: "22.04.2021",
       },
     },
+    {
+      spanishWord: "una mesa2",
+      spanishWordDescription: "el lápiz esta en la mesa",
+      polishhWord: "stół",
+      polishhWordDescription: "ołówek jest na stole",
+      learnedStatus: 0,
+      date: {
+        save: "2021-04-21",
+        learned: "22.04.2021",
+      },
+    },
+    {
+      spanishWord: "una mesa3",
+      spanishWordDescription: "el lápiz esta en la mesa",
+      polishhWord: "stół",
+      polishhWordDescription: "ołówek jest na stole",
+      learnedStatus: 0,
+      date: {
+        save: "2021-04-21",
+        learned: "22.04.2021",
+      },
+    },
   ],
   currentItemIndex: 0,
   stats: [
@@ -109,9 +131,14 @@ const reducer = (state = initialState, action) => {
       };
     case actionsTypes.REMOVE_CARD:
       state.items.splice(action.index, 1);
+      let newIndex = action.index - 1;
+      if (action.index === 0) {
+        newIndex = 0;
+      }
       return {
         ...state,
         items: [...state.items],
+        currentItemIndex: newIndex,
       };
     default:
       return {

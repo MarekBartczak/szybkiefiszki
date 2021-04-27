@@ -28,7 +28,7 @@ class Card extends Component {
 
   checkLearnStatus = (type) => {
     let style;
-    this.props.items[this.props.index].learnedStatus !== type
+    this.props.items[this.props.currentItemIndex].learnedStatus !== type
       ? (style = [styles.learnStat])
       : (style = [styles.selectedLearnStatus]);
 
@@ -37,7 +37,6 @@ class Card extends Component {
 
   deleteCard = (i) => {
     this.setState({ askDel: 1 });
-    // this.props.onDeleteCard(i);
   };
 
   askDel = () => {
@@ -56,12 +55,10 @@ class Card extends Component {
           <div
             className={styles.askDelConfirm}
             onClick={() => {
-              this.setState({ askDel: 0 });
-              console.log(this.props.index);
-              console.log(this.props.items.length);
-              this.props.onDeleteCard(this.props.index);
-              console.log(this.props.index);
-              console.log(this.props.items.length);
+              this.props.onDeleteCard(this.props.currentItemIndex);
+              setTimeout(() => {
+                this.setState({ askDel: 0 });
+              }, 500);
             }}
           >
             Tak
@@ -84,15 +81,17 @@ class Card extends Component {
               <div className={this.flipStyle("word")}>
                 {" "}
                 {this.changeContent(
-                  this.props.items[this.props.index].spanishWord,
-                  this.props.items[this.props.index].polishhWord
+                  this.props.items[this.props.currentItemIndex].spanishWord,
+                  this.props.items[this.props.currentItemIndex].polishhWord
                 )}
               </div>
 
               <div className={this.flipStyle("descriptionWord")}>
                 {this.changeContent(
-                  this.props.items[this.props.index].spanishWordDescription,
-                  this.props.items[this.props.index].polishhWordDescription
+                  this.props.items[this.props.currentItemIndex]
+                    .spanishWordDescription,
+                  this.props.items[this.props.currentItemIndex]
+                    .polishhWordDescription
                 )}
               </div>
             </div>
@@ -102,7 +101,10 @@ class Card extends Component {
                 <div
                   className={this.checkLearnStatus(1)}
                   onClick={() =>
-                    this.props.onSwitchLearnStatus(this.props.index, 1)
+                    this.props.onSwitchLearnStatus(
+                      this.props.currentItemIndex,
+                      1
+                    )
                   }
                 >
                   umiem to słówko
@@ -110,7 +112,10 @@ class Card extends Component {
                 <div
                   className={this.checkLearnStatus(0)}
                   onClick={() =>
-                    this.props.onSwitchLearnStatus(this.props.index, 0)
+                    this.props.onSwitchLearnStatus(
+                      this.props.currentItemIndex,
+                      0
+                    )
                   }
                 >
                   muszę się nauczyć
@@ -120,7 +125,7 @@ class Card extends Component {
                 <div className={styles.edit}>edytuj</div>
                 <div
                   className={styles.delete}
-                  onClick={() => this.deleteCard(this.props.index)}
+                  onClick={() => this.deleteCard(this.props.currentItemIndex)}
                 >
                   usuń
                 </div>
