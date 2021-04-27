@@ -14,6 +14,10 @@ const initialState = {
       polishhWord: "piwo",
       polishhWordDescription: "poprosze piwo",
       learnedStatus: 0,
+      date: {
+        save: "2021-04-24",
+        learned: "25.04.2021",
+      },
     },
     {
       spanishWord: "el coche",
@@ -21,6 +25,10 @@ const initialState = {
       polishhWord: "samochód",
       polishhWordDescription: "nie potrzebuje samochodu",
       learnedStatus: 0,
+      date: {
+        save: "2021-04-23",
+        learned: "24.04.2021",
+      },
     },
     {
       spanishWord: "una mesa",
@@ -28,6 +36,10 @@ const initialState = {
       polishhWord: "stół",
       polishhWordDescription: "ołówek jest na stole",
       learnedStatus: 0,
+      date: {
+        save: "2021-04-21",
+        learned: "22.04.2021",
+      },
     },
   ],
   currentItemIndex: 0,
@@ -75,6 +87,11 @@ const reducer = (state = initialState, action) => {
         currentItemIndex: action.index,
       };
     case actionsTypes.SWITCH_LEARN_STATUS:
+      let isLearned = "";
+      if (action.status) {
+        isLearned = new Date().toISOString().slice(0, 10);
+      }
+
       return {
         ...state,
         items: state.items.map((item, index) =>
@@ -82,6 +99,10 @@ const reducer = (state = initialState, action) => {
             ? {
                 ...item,
                 learnedStatus: action.status,
+                date: {
+                  ...item.date,
+                  learned: isLearned,
+                },
               }
             : item
         ),

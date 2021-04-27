@@ -10,6 +10,10 @@ class AddNewWord extends Component {
     polishhWord: "",
     polishhWordDescription: "",
     learnedStatus: 0,
+    date: {
+      save: new Date().toISOString().slice(0, 10),
+      learned: "",
+    },
   };
 
   handleInput = (event) => {
@@ -42,6 +46,10 @@ class AddNewWord extends Component {
       spanishWordDescription: "",
       polishhWord: "",
       polishhWordDescription: "",
+      date: {
+        save: "",
+        learned: "",
+      },
     });
   };
 

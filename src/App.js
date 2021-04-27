@@ -14,6 +14,7 @@ import SummaryCollection from "./Components/summaryCollection/summaryCollection"
 class App extends Component {
   render() {
     this.props.onShowAll();
+    console.log(this.props.items);
     return (
       <Aux>
         <Navbar />
