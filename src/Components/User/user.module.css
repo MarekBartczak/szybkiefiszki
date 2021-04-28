@@ -1,0 +1,103 @@
+.user {
+  position: absolute;
+  background: rgb(10, 10, 10);
+  top: 10vh;
+  left: 0;
+  height: 55vh;
+  width: 100%;
+  margin: auto;
+  transform: translateY(-100vh);
+  z-index: 4000;
+  transition: all 0.3s linear;
+}
+
+.show {
+  transform: translateY(0);
+  transition: all 0.3s linear;
+}
+
+.title {
+  text-align: center;
+  margin: 20px;
+}
+
+.inputType {
+  width: 80%;
+  padding: 4px;
+  margin: 3px;
+  margin-top: 10px;
+  background: inherit;
+  outline: none;
+  color: white;
+  border: 0;
+  border-bottom: 1px solid rgb(29, 28, 28);
+}
+input[type="text"] {
+  font-size: inherit;
+}
+
+.authForm {
+  margin: auto;
+  padding-bottom: 20px;
+  height: fit-content;
+  width: 90%;
+  background: rgb(39, 39, 39);
+  box-shadow: inset 0 0 10px black;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 15px;
+  padding-top: 5px;
+  color: white;
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  /* background: red; */
+  height: 100px;
+  width: 100%;
+}
+
+.submitBtn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: white;
+  width: fit-content;
+  /* margin-left: 60%; */
+  background: rgb(10, 10, 10);
+  text-align: center;
+  border-radius: 15px;
+  padding: 7px;
+
+  border: 2px solid rgb(66, 66, 66);
+}
+.submitBtn:active {
+  color: rgb(87, 142, 142);
+}
+
+.changeBtn {
+  font-size: 12px;
+  color: white;
+  margin-top: 20px;
+}
+.changeBtn:active {
+  color: rgb(87, 142, 142);
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
+}
+
+.logout {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}

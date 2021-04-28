@@ -13,3 +13,14 @@
   height: 100%;
   margin: auto;
 }
+.user {
+  color: rgb(129, 129, 129);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 4001;
+}
+
+.userActive {
+  color: rgb(87, 142, 142);
+}

@@ -7,6 +7,7 @@ const initialState = {
   addNewWordCardToggle: false,
   showStatsToggle: false,
   showFilterToggle: false,
+  showUserToggle: false,
   //   backDropToggle: false,
   items: [
     {
@@ -102,6 +103,7 @@ const reducer = (state = initialState, action) => {
         showStatsToggle: !state.showStatsToggle,
         showFilterToggle: false,
         addNewWordCardToggle: false,
+        showUserToggle: false,
       };
     case actionsTypes.SHOW_FILTER_TOGGLE:
       return {
@@ -109,6 +111,15 @@ const reducer = (state = initialState, action) => {
         showFilterToggle: !state.showFilterToggle,
         showStatsToggle: false,
         addNewWordCardToggle: false,
+        showUserToggle: false,
+      };
+    case actionsTypes.SHOW_USER_TOGGLE:
+      return {
+        ...state,
+        showUserToggle: !state.showUserToggle,
+        showStatsToggle: false,
+        addNewWordCardToggle: false,
+        showFilterToggle: false,
       };
     case actionsTypes.SELECT_STATS:
       return {
