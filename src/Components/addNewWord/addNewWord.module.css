@@ -31,7 +31,6 @@
   box-shadow: inset 0 0 10px black;
   border-radius: 15px;
   text-align: center;
-  font-family: "chalk";
   font-size: 15px;
   padding-top: 5px;
   color: white;
@@ -51,7 +50,6 @@ input[type="text"] {
   font-size: inherit;
 }
 .submitBtn {
-  font-family: "chalk";
   font-size: 15px;
   color: white;
   width: 100px;

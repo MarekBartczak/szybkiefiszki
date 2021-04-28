@@ -3,7 +3,7 @@ import styles from "./user.module.css";
 import { connect } from "react-redux";
 import BackDrop from "../backdrop/backdrop";
 import Aux from "../../hoc/aux";
-import * as users from "../../Container/User/user";
+import * as user from "../../Container/User/user";
 // import * as actionsTypes from '../../store/actions/actions';
 
 class User extends Component {
@@ -16,9 +16,9 @@ class User extends Component {
     rememberUser: 0,
   };
   componentDidMount() {
-    users.getTestData();
-    console.log(users.credentials);
-    console.log(users.token);
+    user.getTestData();
+    console.log(user.credentials);
+    console.log(user.token);
   }
   componentDidUpdate() {
     console.log(this.state);
@@ -82,7 +82,12 @@ class User extends Component {
           </div>
           <div className={styles.btns}>
             {this.state.registerForm ? (
-              <div className={styles.submitBtn}>Zarejestruj</div>
+              <div
+                className={styles.submitBtn}
+                onClick={() => user.createUser(user.credentials)}
+              >
+                Zarejestruj
+              </div>
             ) : (
               <Aux>
                 <div
