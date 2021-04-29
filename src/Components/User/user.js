@@ -3,8 +3,40 @@ import styles from "./user.module.css";
 import { connect } from "react-redux";
 import BackDrop from "../backdrop/backdrop";
 import Aux from "../../hoc/aux";
-import * as user from "../../Container/User/user";
+import axiosInscance from "../../axios";
+import axios from "axios";
+import * as actionsTypes from "../../store/actions/actions";
 // import * as actionsTypes from '../../store/actions/actions';
+
+const credentials = {
+  login: "marek.bartczak@gmail.com",
+  pass: "password123",
+};
+
+const createUser = (newUserCredentials) => {
+  const auth = {
+    email: newUserCredentials.login,
+    password: newUserCredentials.pass,
+    returnSecureToken: true,
+  };
+  const url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
+  axios.post(url + process.env.TOKEN, auth).then((res) => {
+    // console.log(res);
+    const newObj = {
+      items: [],
+      selectedStats: 0,
+      selectedFilter: 0,
+    };
+
+    axiosInscance
+      .put(
+        "usersItems/" + res.data.localId + ".json?auth=" + res.data.idToken,
+        newObj
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  });
+};
 
 class User extends Component {
   state = {
@@ -16,9 +48,59 @@ class User extends Component {
     rememberUser: 0,
   };
 
-  componentDidUpdate() {
-    console.log(this.state);
+  logout = () => {
+    localStorage.clear();
+    this.props.onCheckLoginStatus(0);
+    this.props.onClearItems();
+  };
+  signIn = (userCredentials) => {
+    const url =
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
+    const auth = {
+      email: userCredentials.login,
+      password: userCredentials.pass,
+      returnSecureToken: true,
+    };
+    axios.post(url + process.env.TOKEN, auth).then((res) => {
+      localStorage.clear();
+      localStorage.setItem("email", res.data.email);
+      localStorage.setItem("localId", res.data.localId);
+      localStorage.setItem("idToken", res.data.idToken);
+      this.props.onCheckLoginStatus(1);
+      this.getItems();
+      console.log(localStorage);
+    });
+  };
+
+  componentDidMount() {
+    if (localStorage.getItem("email") !== null) {
+      //   this.setState({ isLogin: 1 });
+      this.props.onCheckLoginStatus(1);
+
+      this.getItems();
+    }
+    console.log(localStorage);
   }
+
+  getItems = () => {
+    if (!this.props.loadedItems) {
+      console.log("login");
+      axiosInscance
+        .get(
+          "usersItems/" +
+            localStorage.getItem("localId") +
+            "/items.json?auth=" +
+            localStorage.getItem("idToken")
+        )
+        .then((res) => {
+          const values = Object.values(res.data);
+          const keys = Object.keys(res.data);
+          values.forEach((el, index) => (el.id = keys[index]));
+          console.log(values);
+          this.props.onShowAll(values);
+        });
+    }
+  };
   showBackdrop = () => {
     let backdrop;
     this.props.showUserToggle
@@ -61,12 +143,7 @@ class User extends Component {
   };
 
   authForm = (isLogin) => {
-    //   async login = () => {
-    //     const userInfo = await user.signIn(user.credentials);
-    //     console.log(userInfo)
-
-    //   };
-    if (!isLogin) {
+    if (!this.props.isUserLogin) {
       return (
         <div className={styles.form}>
           <div className={styles.authForm}>
@@ -85,7 +162,7 @@ class User extends Component {
             {this.state.registerForm ? (
               <div
                 className={styles.submitBtn}
-                onClick={() => user.createUser(user.credentials)}
+                onClick={() => createUser(credentials)}
               >
                 Zarejestruj
               </div>
@@ -94,7 +171,7 @@ class User extends Component {
                 <div
                   className={styles.submitBtn}
                   onClick={() => {
-                    user.signIn(user.credentials);
+                    this.signIn(credentials);
                     this.setState({ isLogin: 1 });
                   }}
                 >
@@ -126,13 +203,13 @@ class User extends Component {
         </div>
       );
     }
-    if (isLogin) {
+    if (this.props.isUserLogin) {
       return (
         <div className={styles.logout}>
           <div
             className={styles.submitBtn}
             onClick={() => {
-              user.logout();
+              this.logout();
               this.setState({ isLogin: 0 });
               console.log(localStorage);
             }}
@@ -162,5 +239,14 @@ const mapStateToPropst = (state) => {
     ...state,
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onCheckLoginStatus: (status) =>
+      dispatch({ type: actionsTypes.CHECK_LOGIN_STATUS, status: status }),
+    onShowAll: (items) =>
+      dispatch({ type: actionsTypes.SHOW_ALL, items: items }),
+    onClearItems: () => dispatch({ type: actionsTypes.CLEAR_ITEMS }),
+  };
+};
 
-export default connect(mapStateToPropst, null)(User);
+export default connect(mapStateToPropst, mapDispatchToProps)(User);

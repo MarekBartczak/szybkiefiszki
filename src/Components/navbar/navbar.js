@@ -6,6 +6,14 @@ import * as actionsTypes from "../../store/actions/actions";
 import User from "../User/user";
 
 class Navbar extends Component {
+  state = {};
+
+  // componentDidMount() {
+  //   if (localStorage.getItem("email") !== null) {
+  //     this.setState({ loginStyle: "green" });
+  //   }
+  // }
+
   lightUserBtn = () => {
     let style;
     this.props.showUserToggle
@@ -29,7 +37,10 @@ class Navbar extends Component {
           className={this.lightUserBtn()}
           onClick={() => this.ShowUserToggle()}
         >
-          <i className="far fa-user fa-2x"></i>
+          <i
+            className="far fa-user fa-2x"
+            style={{ color: this.props.isUserLogin ? "green" : null }}
+          ></i>
         </div>
       </Aux>
     );

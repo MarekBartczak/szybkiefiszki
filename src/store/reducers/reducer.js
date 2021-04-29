@@ -5,6 +5,8 @@ const initialState = {
     version: 0.1,
     description: "add new spanish and polish word and learn",
   },
+  loadedItems: 0,
+  isUserLogin: 0,
   addNewWordCardToggle: false,
   showStatsToggle: false,
   showFilterToggle: false,
@@ -90,8 +92,24 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionsTypes.SHOW_ALL:
+      console.log(action.items);
       return {
         ...state,
+        loadedItems: 1,
+        items: action.items,
+      };
+
+    case actionsTypes.CLEAR_ITEMS:
+      return {
+        ...state,
+        items: [],
+        loadedItems: 0,
+      };
+
+    case actionsTypes.CHECK_LOGIN_STATUS:
+      return {
+        ...state,
+        isUserLogin: action.status,
       };
     case actionsTypes.ADD_NEW_WORD_CARD_TOGGLE:
       return {
