@@ -10,61 +10,61 @@ const initialState = {
   showUserToggle: false,
   //   backDropToggle: false,
   items: [
-    {
-      spanishWord: "una cerveza",
-      spanishWordDescription: "yo quiero una cerveza",
-      polishhWord: "piwo",
-      polishhWordDescription: "poprosze piwo",
-      learnedStatus: 0,
-      date: {
-        save: "2021-04-24",
-        learned: "25.04.2021",
-      },
-    },
-    {
-      spanishWord: "el coche",
-      spanishWordDescription: "yo no necesito un coche",
-      polishhWord: "samochód",
-      polishhWordDescription: "nie potrzebuje samochodu",
-      learnedStatus: 0,
-      date: {
-        save: "2021-04-23",
-        learned: "24.04.2021",
-      },
-    },
-    {
-      spanishWord: "una mesa",
-      spanishWordDescription: "el lápiz esta en la mesa",
-      polishhWord: "stół",
-      polishhWordDescription: "ołówek jest na stole",
-      learnedStatus: 0,
-      date: {
-        save: "2021-04-21",
-        learned: "22.04.2021",
-      },
-    },
-    {
-      spanishWord: "una mesa2",
-      spanishWordDescription: "el lápiz esta en la mesa",
-      polishhWord: "stół",
-      polishhWordDescription: "ołówek jest na stole",
-      learnedStatus: 0,
-      date: {
-        save: "2021-04-21",
-        learned: "22.04.2021",
-      },
-    },
-    {
-      spanishWord: "una mesa3",
-      spanishWordDescription: "el lápiz esta en la mesa",
-      polishhWord: "stół",
-      polishhWordDescription: "ołówek jest na stole",
-      learnedStatus: 0,
-      date: {
-        save: "2021-04-21",
-        learned: "22.04.2021",
-      },
-    },
+    // {
+    //   spanishWord: "una cerveza",
+    //   spanishWordDescription: "yo quiero una cerveza",
+    //   polishhWord: "piwo",
+    //   polishhWordDescription: "poprosze piwo",
+    //   learnedStatus: 0,
+    //   date: {
+    //     save: "2021-04-24",
+    //     learned: "25.04.2021",
+    //   },
+    // },
+    // {
+    //   spanishWord: "el coche",
+    //   spanishWordDescription: "yo no necesito un coche",
+    //   polishhWord: "samochód",
+    //   polishhWordDescription: "nie potrzebuje samochodu",
+    //   learnedStatus: 0,
+    //   date: {
+    //     save: "2021-04-23",
+    //     learned: "24.04.2021",
+    //   },
+    // },
+    // {
+    //   spanishWord: "una mesa",
+    //   spanishWordDescription: "el lápiz esta en la mesa",
+    //   polishhWord: "stół",
+    //   polishhWordDescription: "ołówek jest na stole",
+    //   learnedStatus: 0,
+    //   date: {
+    //     save: "2021-04-21",
+    //     learned: "22.04.2021",
+    //   },
+    // },
+    // {
+    //   spanishWord: "una mesa2",
+    //   spanishWordDescription: "el lápiz esta en la mesa",
+    //   polishhWord: "stół",
+    //   polishhWordDescription: "ołówek jest na stole",
+    //   learnedStatus: 0,
+    //   date: {
+    //     save: "2021-04-21",
+    //     learned: "22.04.2021",
+    //   },
+    // },
+    // {
+    //   spanishWord: "una mesa3",
+    //   spanishWordDescription: "el lápiz esta en la mesa",
+    //   polishhWord: "stół",
+    //   polishhWordDescription: "ołówek jest na stole",
+    //   learnedStatus: 0,
+    //   date: {
+    //     save: "2021-04-21",
+    //     learned: "22.04.2021",
+    //   },
+    // },
   ],
   currentItemIndex: 0,
   stats: [

@@ -75,6 +75,7 @@ class AddNewWord extends Component {
       <input
         type="text"
         className={styles[cls]}
+        autoComplete="off"
         value={this.state[val]}
         name={`${val}`}
         placeholder={`${plchldr}`}

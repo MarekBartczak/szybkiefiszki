@@ -13,7 +13,7 @@ import SummaryCollection from "./Components/summaryCollection/summaryCollection"
 
 class App extends Component {
   render() {
-    this.props.onShowAll();
+    // this.props.onShowAll();
     return (
       <Aux>
         <Navbar />

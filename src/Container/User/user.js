@@ -1,10 +1,6 @@
 import axiosInscance from "../../axios";
 import axios from "axios";
 
-export const getTestData = () => {
-  axiosInscance.get("/test.json").then((res) => console.log(res.data));
-};
-
 export const credentials = {
   login: "marek.bartczak@gmail.com",
   pass: "password123",
@@ -14,18 +10,17 @@ export const credentials = {
 export const token = "AIzaSyASxGngqUQjOSlvt44XEX2_JMT4rmsTRL8";
 
 export const createUser = (newUserCredentials) => {
-  console.log(newUserCredentials.login);
-  console.log(newUserCredentials.pass);
+  //   console.log(newUserCredentials.login);
+  //   console.log(newUserCredentials.pass);
 
   const auth = {
     email: newUserCredentials.login,
     password: newUserCredentials.pass,
     returnSecureToken: true,
   };
-  const url =
-    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyASxGngqUQjOSlvt44XEX2_JMT4rmsTRL8";
-  axios.post(url, auth).then((res) => {
-    console.log(res);
+  const url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
+  axios.post(url + token, auth).then((res) => {
+    // console.log(res);
     const newObj = {
       items: [],
       selectedStats: 0,
@@ -40,5 +35,26 @@ export const createUser = (newUserCredentials) => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   });
-  //   console.log(url + token);
+};
+
+export const signIn = (userCredentials) => {
+  const url =
+    "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
+  const auth = {
+    email: userCredentials.login,
+    password: userCredentials.pass,
+    returnSecureToken: true,
+  };
+  axios.post(url + token, auth).then((res) => {
+    localStorage.clear();
+    localStorage.setItem("email", res.data.email);
+    localStorage.setItem("localId", res.data.localId);
+    localStorage.setItem("idToken", res.data.idToken);
+    // console.log(res);
+    // console.log(localStorage);
+  });
+};
+
+export const logout = () => {
+  localStorage.clear();
 };

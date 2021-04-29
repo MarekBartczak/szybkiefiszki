@@ -15,11 +15,7 @@ class User extends Component {
     registerForm: 0,
     rememberUser: 0,
   };
-  componentDidMount() {
-    user.getTestData();
-    console.log(user.credentials);
-    console.log(user.token);
-  }
+
   componentDidUpdate() {
     console.log(this.state);
   }
@@ -65,6 +61,11 @@ class User extends Component {
   };
 
   authForm = (isLogin) => {
+    //   async login = () => {
+    //     const userInfo = await user.signIn(user.credentials);
+    //     console.log(userInfo)
+
+    //   };
     if (!isLogin) {
       return (
         <div className={styles.form}>
@@ -92,7 +93,10 @@ class User extends Component {
               <Aux>
                 <div
                   className={styles.submitBtn}
-                  onClick={() => this.setState({ isLogin: 1 })}
+                  onClick={() => {
+                    user.signIn(user.credentials);
+                    this.setState({ isLogin: 1 });
+                  }}
                 >
                   Zaloguj
                 </div>
@@ -127,7 +131,11 @@ class User extends Component {
         <div className={styles.logout}>
           <div
             className={styles.submitBtn}
-            onClick={() => this.setState({ isLogin: 0 })}
+            onClick={() => {
+              user.logout();
+              this.setState({ isLogin: 0 });
+              console.log(localStorage);
+            }}
           >
             Wyloguj
           </div>
