@@ -92,7 +92,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionsTypes.SHOW_ALL:
-      console.log(action.items);
+      // console.log(action.items);
       return {
         ...state,
         loadedItems: 1,
@@ -193,6 +193,26 @@ const reducer = (state = initialState, action) => {
             : item
         ),
       };
+    case actionsTypes.UPDATE_LEARN_STATUS:
+      const id = action.item.id;
+      delete action.item.id;
+      console.log(action.item);
+      axiosInscance
+        .put(
+          "usersItems/" +
+            localStorage.getItem("localId") +
+            "/items/" +
+            id +
+            ".json?auth=" +
+            localStorage.getItem("idToken"),
+          action.item
+        )
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+      return {
+        ...state,
+      };
+
     case actionsTypes.REMOVE_CARD:
       state.items.splice(action.index, 1);
       let newIndex = action.index - 1;

@@ -3,6 +3,7 @@ import styles from "./card.module.css";
 import Aux from "../../hoc/aux";
 import { connect } from "react-redux";
 import * as actionsTypes from "../../store/actions/actions";
+import axiosInscance from "../../axios";
 
 class Card extends Component {
   state = {
@@ -55,6 +56,18 @@ class Card extends Component {
           <div
             className={styles.askDelConfirm}
             onClick={() => {
+              console.log(this.props.items[this.props.currentItemIndex].id);
+              axiosInscance
+                .delete(
+                  "usersItems/" +
+                    localStorage.getItem("localId") +
+                    "/items/" +
+                    this.props.items[this.props.currentItemIndex].id +
+                    ".json?auth=" +
+                    localStorage.getItem("idToken")
+                )
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err));
               this.props.onDeleteCard(this.props.currentItemIndex);
               setTimeout(() => {
                 this.setState({ askDel: 0 });
@@ -69,6 +82,7 @@ class Card extends Component {
   };
 
   render() {
+    // console.log(this.props.items[this.props.currentItemIndex]);
     return (
       <Aux>
         {this.state.askDel ? this.askDel() : null}
@@ -100,29 +114,39 @@ class Card extends Component {
               <div className={styles.learn}>
                 <div
                   className={this.checkLearnStatus(1)}
-                  onClick={() =>
+                  onClick={() => {
                     this.props.onSwitchLearnStatus(
                       this.props.currentItemIndex,
                       1
-                    )
-                  }
+                    );
+                    setTimeout(() => {
+                      this.props.onUpdateLearnStatus(
+                        this.props.items[this.props.currentItemIndex]
+                      );
+                    }, 300);
+                  }}
                 >
                   umiem to słówko
                 </div>
                 <div
                   className={this.checkLearnStatus(0)}
-                  onClick={() =>
+                  onClick={() => {
                     this.props.onSwitchLearnStatus(
                       this.props.currentItemIndex,
                       0
-                    )
-                  }
+                    );
+                    setTimeout(() => {
+                      this.props.onUpdateLearnStatus(
+                        this.props.items[this.props.currentItemIndex]
+                      );
+                    }, 300);
+                  }}
                 >
                   muszę się nauczyć
                 </div>
               </div>
               <div className={styles.manage}>
-                <div className={styles.edit}>edytuj</div>
+                {/* <div className={styles.edit}>edytuj</div> */}
                 <div
                   className={styles.delete}
                   onClick={() => this.deleteCard(this.props.currentItemIndex)}
@@ -153,6 +177,8 @@ const mapDispatchToProps = (dispatch) => {
       }),
     onDeleteCard: (index) =>
       dispatch({ type: actionsTypes.REMOVE_CARD, index: index }),
+    onUpdateLearnStatus: (item) =>
+      dispatch({ type: actionsTypes.UPDATE_LEARN_STATUS, item: item }),
   };
 };
 export default connect(mapStateToPropst, mapDispatchToProps)(Card);

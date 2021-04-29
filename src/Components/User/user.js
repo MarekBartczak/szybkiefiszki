@@ -20,7 +20,7 @@ const createUser = (newUserCredentials) => {
     returnSecureToken: true,
   };
   const url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
-  axios.post(url + process.env.TOKEN, auth).then((res) => {
+  axios.post(url + process.env.REACT_APP_TOKEN, auth).then((res) => {
     // console.log(res);
     const newObj = {
       items: [],
@@ -61,7 +61,7 @@ class User extends Component {
       password: userCredentials.pass,
       returnSecureToken: true,
     };
-    axios.post(url + process.env.TOKEN, auth).then((res) => {
+    axios.post(url + process.env.REACT_APP_TOKEN, auth).then((res) => {
       localStorage.clear();
       localStorage.setItem("email", res.data.email);
       localStorage.setItem("localId", res.data.localId);
@@ -79,12 +79,12 @@ class User extends Component {
 
       this.getItems();
     }
-    console.log(localStorage);
+    // console.log(localStorage);
   }
 
   getItems = () => {
     if (!this.props.loadedItems) {
-      console.log("login");
+      //   console.log("login");
       axiosInscance
         .get(
           "usersItems/" +
@@ -96,7 +96,7 @@ class User extends Component {
           const values = Object.values(res.data);
           const keys = Object.keys(res.data);
           values.forEach((el, index) => (el.id = keys[index]));
-          console.log(values);
+          //   console.log(values);
           this.props.onShowAll(values);
         });
     }
@@ -211,7 +211,7 @@ class User extends Component {
             onClick={() => {
               this.logout();
               this.setState({ isLogin: 0 });
-              console.log(localStorage);
+              //   console.log(localStorage);
             }}
           >
             Wyloguj
