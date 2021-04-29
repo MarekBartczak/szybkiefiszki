@@ -1,4 +1,5 @@
 import * as actionsTypes from "../actions/actions";
+import axiosInscance from "../../axios";
 const initialState = {
   addInfo: {
     version: 0.1,
@@ -133,6 +134,17 @@ const reducer = (state = initialState, action) => {
       };
 
     case actionsTypes.SAVE_WORD:
+      console.log(action.word);
+      axiosInscance
+        .post(
+          "usersItems/" +
+            localStorage.getItem("localId") +
+            "/items.json?auth=" +
+            localStorage.getItem("idToken"),
+          action.word
+        )
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
       return {
         ...state,
         items: [...state.items, action.word],

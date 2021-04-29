@@ -46,10 +46,6 @@ class AddNewWord extends Component {
       spanishWordDescription: "",
       polishhWord: "",
       polishhWordDescription: "",
-      date: {
-        save: "",
-        learned: "",
-      },
     });
   };
 

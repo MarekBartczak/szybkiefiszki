@@ -51,7 +51,7 @@ export const signIn = (userCredentials) => {
     localStorage.setItem("localId", res.data.localId);
     localStorage.setItem("idToken", res.data.idToken);
     // console.log(res);
-    // console.log(localStorage);
+    console.log(localStorage);
   });
 };
 
